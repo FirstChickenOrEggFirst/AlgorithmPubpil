@@ -60,11 +60,7 @@ public class Array<E> {
      * @param e element
      */
     public void addLast(E e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("addLast Failed,Array is full");
-        }
-        data[size] = e;
-        size++;
+        add(size, e);
     }
 
     /**
@@ -83,11 +79,12 @@ public class Array<E> {
      * @param e
      */
     public void add(int index, E e) {
-        if (size == data.length) {
-            throw new IllegalArgumentException("addLast Failed,Array is full");
-        }
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("addLast Failed,Required index >= 0 and index <= currentSize");
+        }
+        // 如果添加元素时检测到满了，则动态扩展为原来长度的两倍
+        if (size == data.length) {
+            reSize(2 * data.length);
         }
 
         for (int i = size - 1; i >= index; i--) {
@@ -112,6 +109,7 @@ public class Array<E> {
 
     /**
      * 修改指定位置的元素
+     *
      * @param index
      * @param e
      */
@@ -168,6 +166,10 @@ public class Array<E> {
         }
         size--;
         data[size] = null;
+        // 移除元素时，如果数组中元素数量减少到一定程度，则缩小数组长度为原来的1/2
+        if (size == data.length / 4) {
+            reSize(data.length / 2);
+        }
         return ret;
     }
 
@@ -199,6 +201,17 @@ public class Array<E> {
         if (index != -1) {
             remove(index);
         }
+    }
+
+    /**
+     * 动态扩展容量
+     */
+    public void reSize(int newCapacity) {
+        E[] newData = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        this.data = newData;
     }
 
     @Override
