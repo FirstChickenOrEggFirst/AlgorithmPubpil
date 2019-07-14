@@ -38,6 +38,12 @@ public class CompareArrayQueueAndLoopQueue {
         return result;
     }
 
+    /**
+     * 100万条数据条件下执行结果
+     * ArrayQueue {inSpendTime=0.0418176, outSpendTime=285.1451258, allSpendTime=285.1869434}
+     * LoopQueue {inSpendTime=0.0555593, outSpendTime=0.0243112, allSpendTime=0.0798705}
+     * 可以看出loopQueue的出队列性能是远远高于arrayQueue的，一个是O(1)的，一个是O(n)的
+     */
     @Test
     public void testInThenOut() {
         int opCount = 1000000;
