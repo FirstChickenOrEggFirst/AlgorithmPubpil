@@ -7,8 +7,18 @@ package com.itpubpil.datastructure.base;
  * 二次封装java中的数组，可动态增长，可增删改查数据
  */
 public class Array<E> {
+    /**
+     * java原始数组
+     */
     private E[] data;
+    /**
+     * size 用于记录当前数组中元素数量
+     */
     private int size;
+    /**
+     * 默认长度
+     */
+    private static final int DEFAULT_CAPACITY = 10;
 
     /**
      * 构造函数，传入数组的容量构造Array
@@ -24,7 +34,7 @@ public class Array<E> {
      * 默认构造函数，长度设置为10
      */
     public Array() {
-        this(10);
+        this(DEFAULT_CAPACITY);
     }
 
     /**
@@ -108,6 +118,24 @@ public class Array<E> {
     }
 
     /**
+     * 获取尾部元素
+     *
+     * @return element
+     */
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    /**
+     * 获取头部元素
+     *
+     * @return element
+     */
+    public E getFirst() {
+        return get(0);
+    }
+
+    /**
      * 修改指定位置的元素
      *
      * @param index
@@ -166,8 +194,8 @@ public class Array<E> {
         }
         size--;
         data[size] = null;
-        // 移除元素时，如果数组中元素数量减少到一定程度，则缩小数组长度为原来的1/2
-        if (size == data.length / 4) {
+        // 移除元素时，如果数组中元素数量减少到一定程度，则缩小数组长度为原来的1/2,避免复杂度震荡
+        if (size == data.length / 4 && data.length / 2 != 0) {
             reSize(data.length / 2);
         }
         return ret;
@@ -206,7 +234,7 @@ public class Array<E> {
     /**
      * 动态扩展容量
      */
-    public void reSize(int newCapacity) {
+    private void reSize(int newCapacity) {
         E[] newData = (E[]) new Object[newCapacity];
         for (int i = 0; i < size; i++) {
             newData[i] = data[i];
