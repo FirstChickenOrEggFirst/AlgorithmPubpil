@@ -24,6 +24,9 @@ target/
 *.patch
 *.tmp
 
+# java
+*.class
+
 # system ignore
 .DS_Store
 Thumbs.db

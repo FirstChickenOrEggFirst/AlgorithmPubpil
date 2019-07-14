@@ -14,7 +14,7 @@ import java.util.Random;
  * 入队后再出队，比较耗时
  */
 public class CompareArrayQueueAndLoopQueue {
-    public Map<String, Double> inThenOutQueueTime(Queue<Integer> q, int opCount) {
+    private Map<String, Double> inThenOutQueueTime(Queue<Integer> q, int opCount) {
         long startTime = System.nanoTime();
         Random random = new Random();
         // 入队
