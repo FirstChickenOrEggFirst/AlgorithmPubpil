@@ -1,5 +1,7 @@
 package com.itpubpil.datastructure.bst;
 
+import org.w3c.dom.Node;
+
 /**
  * @author wangjingbiao
  * createTime: 2021/6/21 22:05
@@ -34,31 +36,21 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     public void add(E e) {
-        if (root == null) {
-            root = new Node(e);
-            size++;
-            return;
-        }
-        add(root, e);
-
+        root = add(root, e);
     }
 
-    private void add(Node node, E e) {
-        if (e.compareTo(node.e) < 0) {
-            if (node.left == null) {
-                node.left = new Node(e);
-                size++;
-                return;
-            }
-            add(node.left, e);
-        } else {
-            if (node.right == null) {
-                node.right = new Node(e);
-                size++;
-                return;
-            }
-            add(node.right, e);
+    private Node add(Node node, E e) {
+        if (node == null) {
+            size++;
+            return new Node(e);
         }
+
+        if (e.compareTo(node.e) < 0) {
+            node.left = add(node.left, e);
+        } else if (e.compareTo((node.e)) > 0) {
+            node.right = add(node.right, e);
+        }
+        return node;
     }
 
 }
