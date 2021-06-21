@@ -1,0 +1,38 @@
+package com.itpubpil.datastructure.bst;
+
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.util.Arrays;
+
+/**
+ * @author wangjingbiao
+ * createTime: 2021/6/21 22:42
+ * desc:
+ * 测试二分搜索树
+ */
+public class BinarySearchTreeTest {
+    private BinarySearchTree<Integer> bst;
+
+    @Before
+    public void initBst(){
+        bst = new BinarySearchTree<>();
+        int[] nums = {5,3,4,8,4,2};
+        Arrays.stream(nums).forEach((num)-> bst.add(num));
+    }
+
+    @Test
+    public void bstAdd(){
+        System.out.println(bst);
+        bst.add(10);
+        System.out.println(bst);
+    }
+
+    @Test
+    public void  bstContains(){
+        Assert.assertTrue(bst.contains(8));
+        Assert.assertFalse(bst.contains(100));
+    }
+}

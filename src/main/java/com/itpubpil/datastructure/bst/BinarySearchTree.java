@@ -1,6 +1,5 @@
 package com.itpubpil.datastructure.bst;
 
-import org.w3c.dom.Node;
 
 /**
  * @author wangjingbiao
@@ -92,6 +91,31 @@ public class BinarySearchTree<E extends Comparable<E>> {
         System.out.println(node.e);
         preOrder(node.left);
         preOrder(node.right);
+    }
+
+    @Override
+    public String toString() {
+        // 前序遍历打印树
+        StringBuilder res = new StringBuilder();
+        generateBSTString(root, 0, res);
+        return res.toString();
+    }
+
+    private void generateBSTString(Node node, int depth, StringBuilder res) {
+        if (node == null) {
+            return;
+        }
+        res.append(generateDepthString(depth)).append(node.e).append("\n");
+        generateBSTString(node.left, depth + 1, res);
+        generateBSTString(node.right, depth + 1, res);
+    }
+
+    private String generateDepthString(int depth) {
+        StringBuilder res = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            res.append("--");
+        }
+        return res.toString();
     }
 
 }
