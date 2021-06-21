@@ -37,6 +37,7 @@ public class BinarySearchTree<E extends Comparable<E>> {
 
     /**
      * 新增元素
+     *
      * @param e
      */
     public void add(E e) {
@@ -60,20 +61,37 @@ public class BinarySearchTree<E extends Comparable<E>> {
     /**
      * 查询元素
      */
-    public boolean contains(E e){
-        return contains(root,e);
+    public boolean contains(E e) {
+        return contains(root, e);
     }
 
-    private boolean contains(Node node,E e){
-        if(node == null){
+    private boolean contains(Node node, E e) {
+        if (node == null) {
             return false;
         }
         if (e.compareTo(node.e) == 0) {
             return true;
         } else if (e.compareTo((node.e)) > 0) {
-            return contains(node.right,e);
-        }else{
-            return contains(node.left,e);
+            return contains(node.right, e);
+        } else {
+            return contains(node.left, e);
         }
     }
+
+    /**
+     * 前序遍历
+     */
+    public void preOrder() {
+        preOrder(root);
+    }
+
+    private void preOrder(Node node) {
+        if (node == null) {
+            return;
+        }
+        System.out.println(node.e);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
 }
