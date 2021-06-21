@@ -35,6 +35,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return size == 0;
     }
 
+    /**
+     * 新增元素
+     * @param e
+     */
     public void add(E e) {
         root = add(root, e);
     }
@@ -53,4 +57,23 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return node;
     }
 
+    /**
+     * 查询元素
+     */
+    public boolean contains(E e){
+        return contains(root,e);
+    }
+
+    private boolean contains(Node node,E e){
+        if(node == null){
+            return false;
+        }
+        if (e.compareTo(node.e) == 0) {
+            return true;
+        } else if (e.compareTo((node.e)) > 0) {
+            return contains(node.right,e);
+        }else{
+            return contains(node.left,e);
+        }
+    }
 }
