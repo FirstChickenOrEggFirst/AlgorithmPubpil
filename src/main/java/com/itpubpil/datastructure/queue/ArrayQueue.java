@@ -20,12 +20,12 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     @Override
-    public void enquque(T t) {
+    public void enQueue(T t) {
         array.addLast(t);
     }
 
     @Override
-    public T dequeue() {
+    public T deQueue() {
         return array.removeFirst();
     }
 

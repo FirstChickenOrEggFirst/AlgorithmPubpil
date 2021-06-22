@@ -19,7 +19,7 @@ public class LoopQueueTest {
     public void initQueue() {
         queue = new LoopQueue<>();
         for (int i = 0; i < 10; i++) {
-            queue.enquque(i);
+            queue.enQueue(i);
         }
     }
 
@@ -33,7 +33,7 @@ public class LoopQueueTest {
         System.out.println("getFront: " + queue);
         Assert.assertEquals(10, queue.getSize());
 
-        Integer dequeue = queue.dequeue();
+        Integer dequeue = queue.deQueue();
         Assert.assertEquals(0, dequeue.intValue());
         System.out.println("dequeue: " + queue);
         Assert.assertEquals(9,queue.getSize());

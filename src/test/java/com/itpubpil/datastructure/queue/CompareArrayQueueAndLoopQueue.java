@@ -19,12 +19,12 @@ public class CompareArrayQueueAndLoopQueue {
         Random random = new Random();
         // 入队
         for (int i = 0; i < opCount; i++) {
-            q.enquque(random.nextInt(Integer.MAX_VALUE));
+            q.enQueue(random.nextInt(Integer.MAX_VALUE));
         }
         long inEndTime = System.nanoTime();
         // 出队
         for (int i = 0; i < opCount; i++) {
-            q.dequeue();
+            q.deQueue();
         }
         long outEndTime = System.nanoTime();
 

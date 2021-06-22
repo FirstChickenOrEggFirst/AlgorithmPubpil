@@ -12,14 +12,14 @@ public interface Queue<T> {
      *
      * @param t
      */
-    void enquque(T t);
+    void enQueue(T t);
 
     /**
      * 出队
      *
      * @return
      */
-    T dequeue();
+    T deQueue();
 
     /**
      * 查看队首元素

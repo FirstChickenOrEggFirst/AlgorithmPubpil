@@ -38,7 +38,7 @@ public class LoopQueue<T> implements Queue<T> {
     }
 
     @Override
-    public void enquque(T t) {
+    public void enQueue(T t) {
         if ((tail + 1) % data.length == front) {
             resize(2 * getCapacity());
         }
@@ -58,7 +58,7 @@ public class LoopQueue<T> implements Queue<T> {
     }
 
     @Override
-    public T dequeue() {
+    public T deQueue() {
         if (isEmpty()) {
             throw new IllegalArgumentException("Cannot dequeue from an empty queue");
         }

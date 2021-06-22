@@ -35,7 +35,7 @@ public class LinkedListQueue<E> implements Queue<E> {
     }
 
     @Override
-    public void enquque(E e) {
+    public void enQueue(E e) {
         if (tail == null) {
             tail = new Node(e);
             head = tail;
@@ -47,7 +47,7 @@ public class LinkedListQueue<E> implements Queue<E> {
     }
 
     @Override
-    public E dequeue() {
+    public E deQueue() {
         if (isEmpty()) {
             throw new IllegalArgumentException("cannot dequeue from an empty queue");
         }
