@@ -1,6 +1,8 @@
 package com.itpubpil.datastructure.bst;
 
 
+import com.itpubpil.datastructure.queue.LinkedListQueue;
+import com.itpubpil.datastructure.queue.Queue;
 import com.itpubpil.datastructure.statck.LinkedListStack;
 import com.itpubpil.datastructure.statck.Stack;
 
@@ -138,6 +140,28 @@ public class BinarySearchTree<E extends Comparable<E>> {
         midOrder(node.left);
         System.out.println(node.e);
         midOrder(node.right);
+    }
+
+    /**
+     * 层序遍历（广度优先遍历），常用于搜索
+     */
+    public void floorOrder() {
+        if (root == null) {
+            return;
+        }
+
+        Queue<Node> queue = new LinkedListQueue<>();
+        queue.enQueue(root);
+        while (!queue.isEmpty()) {
+            Node node = queue.deQueue();
+            if (node.left != null) {
+                queue.enQueue(node.left);
+            }
+            if (node.right != null) {
+                queue.enQueue(node.right);
+            }
+            System.out.println(node.e);
+        }
     }
 
     public void tailOrder() {

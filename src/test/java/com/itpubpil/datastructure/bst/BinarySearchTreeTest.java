@@ -46,5 +46,7 @@ public class BinarySearchTreeTest {
         bst.midOrder();
         System.out.println("tailOrder:");
         bst.tailOrder();
+        System.out.println("floorOrder:");
+        bst.floorOrder();
     }
 }
