@@ -93,6 +93,39 @@ public class BinarySearchTree<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
+    /**
+     * 中序遍历
+     */
+    public void midOrder(){
+        midOrder(root);
+    }
+
+    /**
+     * 后序遍历
+     * @param node
+     */
+    private void midOrder(Node node){
+        if(node == null){
+            return;
+        }
+        midOrder(node.left);
+        System.out.println(node.e);
+        midOrder(node.right);
+    }
+
+    public void tailOrder(){
+        tailOrder(root);
+    }
+
+    public void tailOrder(Node node){
+        if(node ==null){
+            return;
+        }
+        tailOrder(node.left);
+        tailOrder(node.right);
+        System.out.println(node.e);
+    }
+
     @Override
     public String toString() {
         // 前序遍历打印树

@@ -35,4 +35,14 @@ public class BinarySearchTreeTest {
         Assert.assertTrue(bst.contains(8));
         Assert.assertFalse(bst.contains(100));
     }
+
+    @Test
+    public void bstOrder(){
+        System.out.println("preOrder:");
+        bst.preOrder();
+        System.out.println("midOrder:");
+        bst.midOrder();
+        System.out.println("tailOrder:");
+        bst.tailOrder();
+    }
 }
