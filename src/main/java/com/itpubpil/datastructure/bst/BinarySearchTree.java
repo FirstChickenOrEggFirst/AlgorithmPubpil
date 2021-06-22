@@ -1,6 +1,9 @@
 package com.itpubpil.datastructure.bst;
 
 
+import com.itpubpil.datastructure.statck.LinkedListStack;
+import com.itpubpil.datastructure.statck.Stack;
+
 /**
  * @author wangjingbiao
  * createTime: 2021/6/21 22:05
@@ -94,18 +97,42 @@ public class BinarySearchTree<E extends Comparable<E>> {
     }
 
     /**
+     * 前序遍历非递归实现
+     */
+    public void noRecursionPreOrder() {
+        if (root == null) {
+            return;
+        }
+
+        Stack<Node> stack = new LinkedListStack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node node = stack.pop();
+            // 先入右节点，再入左节点，栈的特点是后入先出
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            System.out.println(node.e);
+        }
+    }
+
+    /**
      * 中序遍历
      */
-    public void midOrder(){
+    public void midOrder() {
         midOrder(root);
     }
 
     /**
      * 后序遍历
+     *
      * @param node
      */
-    private void midOrder(Node node){
-        if(node == null){
+    private void midOrder(Node node) {
+        if (node == null) {
             return;
         }
         midOrder(node.left);
@@ -113,12 +140,12 @@ public class BinarySearchTree<E extends Comparable<E>> {
         midOrder(node.right);
     }
 
-    public void tailOrder(){
+    public void tailOrder() {
         tailOrder(root);
     }
 
-    public void tailOrder(Node node){
-        if(node ==null){
+    public void tailOrder(Node node) {
+        if (node == null) {
             return;
         }
         tailOrder(node.left);
