@@ -49,4 +49,13 @@ public class BinarySearchTreeTest {
         System.out.println("floorOrder:");
         bst.floorOrder();
     }
+
+    @Test
+    public void removeNode(){
+        System.out.println(bst);
+        bst.removeMax();
+        System.out.println(bst);
+        bst.removeMin();
+        System.out.println(bst);
+    }
 }

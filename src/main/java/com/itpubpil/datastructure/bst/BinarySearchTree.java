@@ -5,6 +5,7 @@ import com.itpubpil.datastructure.queue.LinkedListQueue;
 import com.itpubpil.datastructure.queue.Queue;
 import com.itpubpil.datastructure.statck.LinkedListStack;
 import com.itpubpil.datastructure.statck.Stack;
+import org.w3c.dom.Node;
 
 /**
  * @author wangjingbiao
@@ -175,6 +176,77 @@ public class BinarySearchTree<E extends Comparable<E>> {
         tailOrder(node.left);
         tailOrder(node.right);
         System.out.println(node.e);
+    }
+
+    /**
+     * 寻找树最小值
+     */
+    public E minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+        return minimum(root).e;
+    }
+
+    private Node minimum(Node node) {
+        if (node.left == null) {
+            return node;
+        }
+        return minimum(node.left);
+    }
+
+    /**
+     * 删除树最小值
+     */
+    public E removeMin() {
+        E ret = minimum();
+        removeMin(root);
+        return ret;
+    }
+
+    private Node removeMin(Node node) {
+        if (node.left == null) {
+            Node rightNode = node.right;
+            node.right = null;
+            size--;
+            return rightNode;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    public E removeMax() {
+        E ret = maximum();
+        removeMax(root);
+        return ret;
+    }
+
+    private Node removeMax(Node node) {
+        if (node.right == null) {
+            Node leftNode = node.left;
+            node.left = null;
+            size--;
+            return leftNode;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
+    /**
+     * 寻找树最大值
+     */
+    public E maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("BST is empty");
+        }
+        return maximum(root).e;
+    }
+
+    private Node maximum(Node node) {
+        if (node.right == null) {
+            return node;
+        }
+        return maximum(node.right);
     }
 
     @Override
