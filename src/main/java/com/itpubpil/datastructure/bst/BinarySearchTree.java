@@ -200,7 +200,10 @@ public class BinarySearchTree<E extends Comparable<E>> {
      */
     public E removeMin() {
         E ret = minimum();
-        removeMin(root);
+        Node min = removeMin(root);
+        if(ret.compareTo(root.e) == 0){
+            root = min;
+        }
         return ret;
     }
 
@@ -215,9 +218,15 @@ public class BinarySearchTree<E extends Comparable<E>> {
         return node;
     }
 
+    /**
+     * 删除树最大值
+     */
     public E removeMax() {
         E ret = maximum();
-        removeMax(root);
+        Node max = removeMax(root);
+        if(ret.compareTo(root.e) == 0){
+            root = max;
+        }
         return ret;
     }
 
@@ -230,6 +239,50 @@ public class BinarySearchTree<E extends Comparable<E>> {
         }
         node.right = removeMax(node.right);
         return node;
+    }
+
+    /**
+     * 删除任意节点
+     */
+    public void remove(E e) {
+        Node node = remove(root, e);
+        if (root.e.compareTo(e) == 0) {
+            root = node;
+        }
+    }
+
+    private Node remove(Node node, E e) {
+        if (node == null) {
+            return null;
+        }
+        if (e.compareTo(node.e) < 0) {
+            node.left = remove(node.left, e);
+            return node;
+        } else if (e.compareTo(node.e) > 0) {
+            node.right = remove(node.right, e);
+            return node;
+        } else {
+            if (node.left == null) {
+                Node rightNode = node.right;
+                node.right = null;
+                size--;
+                return rightNode;
+            }
+            if (node.right == null) {
+                Node leftNode = node.left;
+                node.left = null;
+                size--;
+                return leftNode;
+            }
+            // 待删除结点左右子树都不为空，找比当前节点大的最小值，替换当前节点
+            Node replaceNode = minimum(node.right);
+            replaceNode.right = removeMin(node.right);
+            replaceNode.left = node.left;
+
+            node.left = node.right = null;
+            return replaceNode;
+        }
+
     }
 
     /**

@@ -53,6 +53,8 @@ public class BinarySearchTreeTest {
     @Test
     public void removeNode(){
         System.out.println(bst);
+        bst.remove(5);
+        System.out.println(bst);
         bst.removeMax();
         System.out.println(bst);
         bst.removeMin();
