@@ -193,6 +193,26 @@ public class LinkedList<E> {
     }
 
     /**
+     * 删除任意元素
+     *
+     * @param e
+     */
+    public void removeElement(E e) {
+        Node cur = dummyHead.next;
+        int index = 0;
+        while (cur != null) {
+            if (cur.e.equals(e)) {
+                cur = cur.next;
+                remove(index);
+            }
+            if (cur != null) {
+                cur = cur.next;
+            }
+            index++;
+        }
+    }
+
+    /**
      * 删除头部元素
      *
      * @return
