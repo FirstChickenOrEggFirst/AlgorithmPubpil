@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 /**
  * @author wangjingbiao
  * createDate: 2021/11/11 周四 4:51 下午
- * desc:
+ * desc: 三数之和
  */
 public class Solution15 {
     public static void main(String[] args) {
